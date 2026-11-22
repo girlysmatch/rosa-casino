@@ -1,0 +1,15 @@
+{
+  "name": "rosa-casino",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "restore": "node scripts/restore-source.mjs",
+    "dev": "npm run restore && wrangler dev",
+    "deploy": "npm run restore && wrangler deploy",
+    "db:init": "wrangler d1 execute rosa55-db --remote --file=./schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
