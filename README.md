@@ -48,3 +48,7 @@ npm run deploy
 
 ## Contenido pendiente
 Las seis misiones, los diez retos y las quince preguntas se configuran desde el panel de organización. La aplicación no incluye textos de juego ficticios.
+
+
+## Pages preview
+Static preview entry point: `index.html` at the repository root.
