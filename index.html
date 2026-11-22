@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4a1728">
+<title>ROSA +55 · Casino Night</title>
+<style>
+:root{--wine:#4a1728;--wine2:#702d43;--cream:#f4ecdf;--paper:#fffaf2;--gold:#c9a66b;--ink:#342a2a;--muted:#81736d}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,sans-serif}
+.hero{background:linear-gradient(135deg,var(--wine2),#2d101b);color:#fffaf2;text-align:center;padding:58px 20px 48px;border-radius:0 0 28px 28px}
+.kicker{font-size:11px;letter-spacing:.24em;color:#e1c99d}.brand{font:72px Georgia,serif;margin:16px 0 0}.brand span{color:var(--gold)}.subtitle{font:italic 28px Georgia,serif;color:#ead9c5;margin-top:2px}
+.wrap{max-width:720px;margin:26px auto;padding:0 16px 48px}.card{background:var(--paper);padding:28px;border-radius:20px;box-shadow:0 10px 30px #35121a0c;margin-bottom:16px}
+h1,h2{font-family:Georgia,serif;color:var(--wine);font-weight:normal}h1{font-size:34px;margin:8px 0 12px}h2{font-size:27px;margin:0 0 10px}p{line-height:1.65;color:var(--muted)}
+label{display:block;font-size:11px;letter-spacing:.16em;color:#987c55;margin:18px 0 8px}input{width:100%;padding:15px;border:1px solid #e6dccc;border-radius:12px;background:white;font-size:16px}
+button{border:0;background:var(--wine);color:white;border-radius:30px;padding:14px 22px;font-weight:bold;cursor:pointer}.primary{width:100%;margin-top:13px}.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.tabs button{background:#fffaf2;color:var(--wine);white-space:nowrap;border:1px solid #eadfce}.tabs button.active{background:var(--wine);color:white}.panel{display:none}.panel.active{display:block}.teams{display:grid;grid-template-columns:1fr 1fr;gap:12px}.teams button{border-radius:14px;background:#fffaf2;border:1px solid #e8dccb;color:var(--wine);padding:20px 8px}.notice{border-left:3px solid var(--gold);padding:10px 14px;background:#f8f1e7;color:var(--muted);font-size:14px}.footer{text-align:center;font-size:11px;letter-spacing:.16em;color:#a08e82;padding:22px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="hero"><div class="kicker">JUEVES · 3 DE DICIEMBRE DE 2026</div><div class="brand">ROSA <span>+55</span></div><div class="subtitle">Casino Night</div><div class="kicker" style="margin-top:20px">UNA NOCHE PARA RECORDAR</div></header>
+<main class="wrap">
+<section class="card" id="welcome"><div class="kicker" style="color:var(--gold)">ACCESO DE INVITADOS</div><h1>Tu noche empieza aquí</h1><p>Bienvenida/o a ROSA +55 Casino Night. Escribe tu nombre o apodo para entrar en tu espacio de juego.</p><label for="guest">TU NOMBRE O APODO</label><input id="guest" maxlength="60" placeholder="Escribe tu nombre"><button class="primary" id="enter">Entrar en la fiesta</button></section>
+<section class="card" id="experience" hidden><div class="kicker" style="color:var(--gold)">TU ESPACIO PRIVADO</div><h1 id="greeting">¡Bienvenida/o!</h1><div class="tabs"><button class="active" data-tab="team">Mi equipo</button><button data-tab="secret">Top Secret</button><button data-tab="challenge">Casino Challenge</button><button data-tab="quiz">Rosa Quiz</button><button data-tab="ranking">Ranking</button></div>
+<div class="panel active" id="team"><h2>Elige tu equipo</h2><p>Selecciona tu bando para comenzar.</p><div class="teams"><button data-team="hearts">♥<br>AS DE CORAZONES</button><button data-team="spades">♠<br>REYES DE PICAS</button></div><p id="team-result" class="notice" hidden></p></div>
+<div class="panel" id="secret"><h2>Top Secret</h2><p>Seis misiones secretas te esperan.</p><div class="notice">Las misiones se activarán cuando la organización configure el contenido.</div></div>
+<div class="panel" id="challenge"><h2>Casino Challenge</h2><p>Diez retos · 10 puntos cada uno.</p><div class="notice">Los retos estarán disponibles cuando la organización los configure.</div></div>
+<div class="panel" id="quiz"><h2>Rosa Quiz</h2><p>¿Cuánto sabes de Rosa?</p><div class="notice">El cuestionario se abrirá cuando lo active la organización.</div></div>
+<div class="panel" id="ranking"><h2>Ranking</h2><p>La clasificación aparecerá aquí cuando comience el juego.</p></div>
+</section><div class="footer">ROSA +55 · CASINO NIGHT</div></main>
+<script>
+const $=s=>document.querySelector(s);
+$('#enter').addEventListener('click',()=>{const n=$('#guest').value.trim();if(!n){$('#guest').focus();return}$('#welcome').hidden=true;$('#experience').hidden=false;$('#greeting').textContent='¡Hola, '+n+'!'});
+$('#guest').addEventListener('keydown',e=>{if(e.key==='Enter')$('#enter').click()});
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===b.dataset.tab))}));
+document.querySelectorAll('[data-team]').forEach(b=>b.addEventListener('click',()=>{const label=b.dataset.team==='hearts'?'As de Corazones ♥':'Reyes de Picas ♠';$('#team-result').hidden=false;$('#team-result').textContent='Has seleccionado: '+label+'. La confirmación y el equilibrio automático de equipos se activarán con el backend del juego.'}));
+</script>
+</body></html>
