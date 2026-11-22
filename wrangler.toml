@@ -1,0 +1,12 @@
+name = "rosa-casino"
+main = "src/index.js"
+compatibility_date = "2026-11-22"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rosa55-db"
+database_id = "8e23594e-5ea9-45a8-8308-fb38c1604db3"
+
+[vars]
+APP_NAME = "ROSA 55"
